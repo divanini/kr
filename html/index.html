@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Главная</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="link-internal-website">
+                <a href="https://www.hse.ru/en/">Сайт ВШЭ</a>
+                <a href="https://www.msu.ru/en/">
+                    Сайт МГУ =>
+                    <img src="../images/msu.png" alt="логотип мгу" style="width: 40px;">
+                </a>
+            </div>
+            <div class="link-hook">
+
+            </div>
+            <div class="link-external-website">
+                <a href="https://mgimo.ru" target="_blank">Сайт МГИМО</a>
+                <a href="https://bmstu.ru" target="_blank">
+                    Сайт МГТУ им. Н.Э. Баумана =>
+                    <img src="../images/bauman.jpg" alt="логотип бау" style="width: 40px;">
+                </a>
+            </div>
+            <div class="links">
+                <a href="index.html" class="link link-1">Главная страница</a>
+                <a href="page1.html" class="link">ВШЭ</a>
+                <a href="page2.html" class="link">МГУ</a>
+                <a href="page3.html" class="link">МГИМО</a>
+                <a href="page4.html" class="link">МГТУ им. Н.Э. Баумана</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="main-text">Добро пожаловать на мой сайт!</div>
+        <form id="contactForm">
+            <h2>ФОРМА</h2>
+            <h2>Контактная информация</h2>
+            <label for="firstName">Имя:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <br>
+            <label for="lastName">Фамилия:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <br>
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <br>
+            <label for="email">Почта:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="date">Дата отправки сообщения:</label>
+            <input type="date" id="date" name="date" required>
+            <br>
+            <label for="gender">Пол:</label>
+            <input type="radio" name="gender" value="Мужской"> Мужской
+            <input type="radio" name="gender" value="Женский"> Женский
+            <br>
+            <input type="submit" value="Отправить">
+            <button type="button" id="clearContactForm">Очистить форму</button>
+        </form>
+        <form id="customForm">
+            <h2>Информация пользователя</h2>
+            <label for="accName">Имя аккаунта:</label>
+            <input type="text" id="accName" name="accName" required>
+            <br>
+            <label for="message">Сообщение</label>
+            <input type="text" id="message" name="message" required>
+            <br>
+            <label for="quantity">Оценка сайту:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="10" required>
+            <br>
+            <label for="subscribe">Подписаться на рассылку по почте:</label>
+            <input type="checkbox" id="subscribe" name="subscribe">
+            <br>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <input type="hidden" name="hiddenField" value="Значение по умолчанию">
+            <br>
+            <input type="submit" value="Отправить">
+            <button type="button" id="clearCustomForm">Очистить форму</button>
+        </form>
+    </main>
+</body>
+<footer style="background-color: purple; margin-top: 3rem; padding: 30px; text-align: center; color: white; cursor: pointer;">
+    Ссылка на дз
+</footer>
+<script>
+    document.getElementById("clearContactForm").addEventListener("click", function() {
+        document.getElementById("contactForm").reset(); 
+    });
+    document.getElementById("clearCustomForm").addEventListener("click", function() {
+        document.getElementById("customForm").reset(); 
+    });
+    document.querySelector('footer').addEventListener('click', function() {
+        window.location.href = "hw.html";
+    });
+</script>
+</html>
