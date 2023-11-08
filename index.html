@@ -41,31 +41,28 @@
             <h2>ФОРМА</h2>
             <h2>Контактная информация</h2>
             <label for="firstName">Имя:</label>
-            <input type="text" id="firstName" name="firstName" required>
+            <input type="text" id="firstName" name="firstName" value="Давид" required>
             <br>
             <label for="lastName">Фамилия:</label>
-            <input type="text" id="lastName" name="lastName" required>
+            <input type="text" id="lastName" name="lastName" value="Чобанян" required>
             <br>
             <label for="phone">Телефон:</label>
-            <input type="tel" id="phone" name="phone" required>
+            <input type="tel" id="phone" name="phone" value="456" required>
             <br>
             <label for="email">Почта:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" value="chobanyan67@gmail.com" required>            
             <br>
             <label for="date">Дата отправки сообщения:</label>
             <input type="date" id="date" name="date" required>
             <br>
             <label for="gender">Пол:</label>
-            <input type="radio" name="gender" value="Мужской"> Мужской
+            <input type="radio" name="gender" value="Мужской" checked> Мужской
             <input type="radio" name="gender" value="Женский"> Женский
             <br>
-            <input type="submit" value="Отправить">
-            <button type="button" id="clearContactForm">Очистить форму</button>
         </form>
-        <form id="customForm">
-            <h2>Информация пользователя</h2>
+        <form id="customForm" style="margin-bottom: 4rem;">
             <label for="accName">Имя аккаунта:</label>
-            <input type="text" id="accName" name="accName" required>
+            <input type="text" id="accName" name="accName" value="gigachad" required>
             <br>
             <label for="message">Сообщение</label>
             <input type="text" id="message" name="message" required>
@@ -74,7 +71,7 @@
             <input type="number" id="quantity" name="quantity" min="1" max="10" required>
             <br>
             <label for="subscribe">Подписаться на рассылку по почте:</label>
-            <input type="checkbox" id="subscribe" name="subscribe">
+            <input type="checkbox" id="subscribe" name="subscribe" checked>
             <br>
             <label for="password">Пароль:</label>
             <input type="password" id="password" name="password" required>
@@ -87,11 +84,52 @@
     </main>
 </body>
 <script>
-    document.getElementById("clearContactForm").addEventListener("click", function() {
-        document.getElementById("contactForm").reset(); 
-    });
     document.getElementById("clearCustomForm").addEventListener("click", function() {
         document.getElementById("customForm").reset(); 
+        document.getElementById("accName").value = "";
+        document.getElementById("message").value = "";
+        document.getElementById("quantity").value = "";
+        document.getElementById("subscribe").checked = false;
+        document.getElementById("password").value = "";
+        document.getElementById("contactForm").reset(); 
+        document.getElementById("firstName").value = "";
+        document.getElementById("lastName").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("date").value = "";
+        document.querySelectorAll('input[name="gender"]').forEach(radio => {
+            radio.checked = false;
+        });
     });
+    const dateInput = document.getElementById("date");
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, "0"); 
+    const day = today.getDate().toString().padStart(2, "0");
+    const todayDate = `${year}-${month}-${day}`;
+    dateInput.value = todayDate;
+    
+
+    const submitCustomFormButton = document.querySelector("#customForm input[type='submit']");
+    submitCustomFormButton.addEventListener("click", function() {
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const date = document.getElementById("date").value;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const accName = document.getElementById("accName").value;
+    const message = document.getElementById("message").value;
+    const quantity = document.getElementById("quantity").value;
+    const subscribe = document.getElementById("subscribe").checked;
+    const password = document.getElementById("password").value;
+    const hiddenField = document.querySelector('input[name="hiddenField"]').value;
+    const query = `Имя: ${firstName}, Фамилия: ${lastName}, Телефон: ${phone}, Почта: ${email}, Дата: ${date}, Пол: ${gender}, Имя аккаунта: ${accName}, Сообщение: ${message}, Оценка сайту: ${quantity}, Подписка: ${subscribe}, Пароль: ${password}, Скрытое поле: ${hiddenField}`;
+    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    window.location.href = searchUrl;
+});
+
+
+
 </script>
 </html>
